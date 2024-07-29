@@ -14,7 +14,7 @@ export default {
   kit: {
     adapter: adapter(),
     paths: {
-      base: '/ship-incident-rates' // replace with your GitHub repository name
+      base: '/ship-incident-rates/docs' // replace with your GitHub repository name
     }
   }
 };

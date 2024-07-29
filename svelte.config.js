@@ -7,19 +7,6 @@ export default {
   preprocess: sveltePreprocess()
 }
 */
-
-import adapter from '@sveltejs/adapter-static';
-
-export default {
-  kit: {
-    adapter: adapter(),
-    paths: {
-      base: '/ship-incident-rates/docs' // replace with your GitHub repository name
-    }
-  }
-};
-
-
 /*
 import adapter from '@sveltejs/adapter-static';
 
@@ -35,7 +22,7 @@ const config = {
 };
 
 export default config;
-
+*/
 
 
 import adapter from '@sveltejs/adapter-static';
@@ -50,8 +37,23 @@ export default {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		    paths: {
+      base: '/ship-incident-rates' // replace with your GitHub repository name
+    }
 	}
+};
+
+/*
+import adapter from '@sveltejs/adapter-static';
+
+export default {
+  kit: {
+    adapter: adapter(),
+    paths: {
+      base: '/ship-incident-rates' // replace with your GitHub repository name
+    }
+  }
 };
 */
 

@@ -1,19 +1,25 @@
-/*
+
 import sveltePreprocess from 'svelte-preprocess'
 
+/*
 export default {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
   preprocess: sveltePreprocess()
 }
 */
-/*
+
+
+
 import adapter from '@sveltejs/adapter-static';
 
 const config = {
+  preprocess: sveltePreprocess(),
 	kit: {
 		adapter: adapter({
-			fallback: '404.html'
+			fallback: '404.html',
+			pages: 'docs',
+			assets: 'docs'
 		}),
 		paths: {
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
@@ -22,18 +28,18 @@ const config = {
 };
 
 export default config;
-*/
 
+/*
 import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import pkg from 'svelte-preprocess';
+const { sveltePreprocess } = pkg;
 
 const dev = process.argv.includes('dev');
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	preprocess: sveltePreprocess(),
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.

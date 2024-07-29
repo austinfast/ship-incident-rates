@@ -166,7 +166,7 @@
 <div class="usat-interactive-graphic">
 <div class="header-wrap article-inner">
   	<h2 class="graphic-header">Synergy's outsized share of shipping accidents</h2>
-	<p class="graphic-chatter">Among almost 6,000 ships the largest companies have managed over the past five years, Synergy managed about 13% -- but those ships saw 24% of the incidents with a death or injury. <!--Synergy stood out for its outsized share of incidents causing a death or injury. -->
+	<p class="graphic-chatter">Among almost 6,000 ships that USA TODAY could confirm the largest companies have managed over the past five years, Synergy managed about 13% -- but the company's ships had 24% of the incidents we found with a death or injury. <!--Synergy stood out for its outsized share of incidents causing a death or injury. -->
 	Hover over the wedges on the chart below to compare the other companies' rates.</p>
  </div>
 <div class="map-wrap">

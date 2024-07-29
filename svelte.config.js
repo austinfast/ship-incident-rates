@@ -22,7 +22,8 @@ const config = {
 			assets: 'docs'
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+	      base: '/ship-incident-rates' // replace with your GitHub repository name
+	      //base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		}
 	}
 };

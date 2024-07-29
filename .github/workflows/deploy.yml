@@ -28,7 +28,7 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ github.event.ship-incident-rates }}'
+          BASE_PATH: 'ship-incident-rates'
         run: |
           npm run build
 

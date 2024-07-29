@@ -1,7 +1,6 @@
 <script>
   import * as d3 from "d3";
   import { writable } from "svelte/store";
-  
 
   let width = 900;
   let height = 450;
@@ -79,36 +78,23 @@
     companyName1: 'Synergy Marine'
   });
 
-  /*function updateCentralText(key, percentText, index) {
-    centralTextStore.update(currentText => {
-      if (index === 0) {
-        // Update text for the left chart
-        return { ...currentText, centralText1: `${percentText}\n${key}`,
-        companyName1: key
-         };
-      } else {
-        // Update text for the right chart
-        return { ...currentText, 
-        centralText2: `${percentText}\n${key}`,
-        companyName1: key };
-      }
-    });
-  }*/
   function updateCentralText(key, percentText, index) {
     centralTextStore.update(currentText => {
       if (index === 0) {
         // Update text for the left chart
         return { ...currentText, centralText1: `${percentText}`,
                 companyName1: key
- };
+         };
       } else {
         // Update text for the right chart
         return { ...currentText, centralText2: `${percentText}`,
                 companyName1: key
- };
+         };
       }
     });
   }
+
+  let highlightedSlice = null; // Track the currently highlighted slice
 
   function handleMouseOver(event, d, index) {
     const percentText = d3.format(".0%")(d.data[1] / d3.sum(index === 1 ? Object.values(data2) : Object.values(data1)));
@@ -134,17 +120,24 @@
     }
 
     // Highlight the hovered slice
+    if (highlightedSlice) {
+      // Remove highlight from the previously highlighted slice
+      d3.select(highlightedSlice).style('stroke', 'white')
+                                 .style('stroke-width', '1px');
+    }
+
+    highlightedSlice = event.currentTarget;
     d3.select(event.currentTarget).raise();
-    d3.select(event.currentTarget).style('stroke', '#000000')
+    d3.select(highlightedSlice).style('stroke', '#000000')
                                .style('stroke-width', '3px');
   }
 
   function handleMouseOut(event) {
-    //centralTextStore.set({ centralText1: '', centralText2: '' });
-    
-    // Remove highlight from the slice
-    d3.select(event.currentTarget).style('stroke', 'white')
-                               .style('stroke-width', '1px');
+    // Don't remove highlight from the currently selected slice
+    if (highlightedSlice !== event.currentTarget) {
+      d3.select(event.currentTarget).style('stroke', 'white')
+                                   .style('stroke-width', '1px');
+    }
   }
 
   function handleFocus(event, d, index) {
@@ -155,6 +148,7 @@
     handleMouseOut(event);
   }
 </script>
+
 
 <style>
   :global(body) {
@@ -171,9 +165,9 @@
 
 <div class="usat-interactive-graphic">
 <div class="header-wrap article-inner">
-  	<h2 class="graphic-header">Synergy's outsized share of shipping incidents</h2>
-	<p class="graphic-chatter">Among over 6,000 ships USA TODAY connected with the largest ship management companies, Synergy managed about 13% -- but those ships had 24% of the incidents with a death or injury. <!--Synergy stood out for its outsized share of incidents causing a death or injury. -->
-	Hover over the slices on the chart below to compare the other companies' rates.</p>
+  	<h2 class="graphic-header">Synergy's outsized share of shipping accidents</h2>
+	<p class="graphic-chatter">Among almost 6,000 ships the largest companies have managed over the past five years, Synergy managed about 13% -- but those ships saw 24% of the incidents with a death or injury. <!--Synergy stood out for its outsized share of incidents causing a death or injury. -->
+	Hover over the wedges on the chart below to compare the other companies' rates.</p>
  </div>
 <div class="map-wrap">
 <center>

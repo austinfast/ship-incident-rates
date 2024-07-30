@@ -118,6 +118,8 @@
   }
 
   let highlightedSlice = null; // Track the currently highlighted slice
+  //let currentFocusedElement = null;
+
 
   function handleMouseOver(event, d, index) {
     const percentText = d3.format(".0%")(d.data[1] / d3.sum(index === 1 ? Object.values(data2) : Object.values(data1)));
@@ -194,6 +196,16 @@
             .style('stroke-width', '1px');
       }
     });
+    
+  //for focus control
+  /*  
+  if (currentFocusedElement && currentFocusedElement !== event.currentTarget) {
+    currentFocusedElement.blur(); // Remove focus from the previously focused element
+  }
+  
+  currentFocusedElement = event.currentTarget; // Update the currently focused element
+  currentFocusedElement.focus(); // Apply focus to the new element
+*/
 
   }
 
@@ -211,7 +223,7 @@
 
   function handleBlur(event) {
     handleMouseOut(event);
-  }
+  }  
   
   function highlightByAriaLabel(label) {
   d3.selectAll('path')

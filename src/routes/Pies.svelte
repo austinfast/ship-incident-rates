@@ -1,6 +1,8 @@
 <script>
   import * as d3 from "d3";
   import { writable } from "svelte/store";
+  import { onMount } from "svelte";
+
 
   let width = 900;
   let height = 450;
@@ -8,39 +10,39 @@
   let radius = Math.min(width / 2, height / 2) - margin;
 
   const data1 = {
+    "Synergy Marine": 843,
     "Anglo-Eastern": 899,
     "Bernhard Schulte Shipmanagement": 742,
     "Columbia Ship Management": 477,
     "Fleet Management": 877,
     "OSM Thome": 656,
     "Seacon Shipping Group": 227,
-    "Synergy Marine": 843,
     "V. Group": 940,
     "Wallem Group": 326,
     "Wilhelmsen Ship Management": 324
   };
 
   const data2 = {
+    "Synergy Marine": 12,
     "Anglo-Eastern": 3,
     "Bernhard Schulte Shipmanagement": 5,
     "Columbia Ship Management": 3,
     "Fleet Management": 8,
     "OSM Thome": 5,
     "Seacon Shipping Group": 1,
-    "Synergy Marine": 12,
     "V. Group": 7,
     "Wallem Group": 1,
     "Wilhelmsen Ship Management": 4
   };
 
   const customColors = [
+    "#e15759", //red
     "#4e79a7", //blue
     "#76b7b2", //turquoise
     "#59a14f", //green
     "#f28e2c", //orange
     "#bab0ab", //grey
     "#af7aa1", //purple
-    "#e15759", //red
     "#ff9da7", //pink
     "#9c755f", //brown
     "#edc949" //yellow
@@ -120,6 +122,7 @@
     }
 
     // Highlight the hovered slice
+    /*
     if (highlightedSlice) {
       // Remove highlight from the previously highlighted slice
       d3.select(highlightedSlice).style('stroke', 'white')
@@ -130,6 +133,47 @@
     d3.select(event.currentTarget).raise();
     d3.select(highlightedSlice).style('stroke', '#000000')
                                .style('stroke-width', '3px');
+                               */
+                               
+                                 // Get the aria-label from the current target
+  let ariaLabel = d3.select(event.currentTarget).attr('aria-label');
+  // Extract the part before the colon
+  if (ariaLabel && ariaLabel.includes(':')) {
+    ariaLabel = ariaLabel.split(':')[0].trim();
+  }
+  console.log (ariaLabel)
+  
+  // Remove highlight from the previously highlighted slice
+  if (highlightedSlice) {
+    d3.select(highlightedSlice)
+      .style('stroke', 'white')
+      .style('stroke-width', '1px');
+  }
+
+  // Set the new highlighted slice
+  highlightedSlice = event.currentTarget;
+
+  // Highlight the currently hovered slice and bring it to the top
+  d3.select(highlightedSlice)
+    .style('stroke', '#000000')
+    .style('stroke-width', '3px')
+    .raise();
+
+  // Highlight all slices with the same aria-label
+  d3.selectAll('path')
+    .each(function() {
+      const path = d3.select(this);
+      const pathAriaLabel = path.attr('aria-label');
+      if (pathAriaLabel && pathAriaLabel.includes(ariaLabel)) {
+        path.style('stroke', '#000000')
+            .style('stroke-width', '3px')
+            .raise(); // Bring the matching slices to the top
+      } else {
+        path.style('stroke', 'white')
+            .style('stroke-width', '1px');
+      }
+    });
+
   }
 
   function handleMouseOut(event) {
@@ -147,6 +191,26 @@
   function handleBlur(event) {
     handleMouseOut(event);
   }
+  
+  function highlightByAriaLabel(label) {
+  d3.selectAll('path')
+    .each(function(d) {
+      const path = d3.select(this);
+      const ariaLabel = path.attr('aria-label');
+      if (ariaLabel && ariaLabel.includes(label)) {
+        path.style('stroke', '#000000').style('stroke-width', '3px')
+        .raise(); // Bring the highlighted slice to the top
+      } else {
+        path.style('stroke', 'white').style('stroke-width', '1px');
+      }
+    });
+}
+
+onMount(() => {
+  setTimeout(() => {
+    highlightByAriaLabel('Synergy Marine');
+  }, 100); // Adjust timeout if necessary
+});
 </script>
 
 

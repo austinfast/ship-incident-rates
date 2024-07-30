@@ -162,7 +162,7 @@
   if (ariaLabel && ariaLabel.includes(':')) {
     ariaLabel = ariaLabel.split(':')[0].trim();
   }
-  //console.log (ariaLabel)
+  console.log (ariaLabel)
   
   // Remove highlight from the previously highlighted slice
   if (highlightedSlice) {
@@ -296,12 +296,6 @@ onMount(() => {
         <title>{slice.data[0] + ': ' + slice.data[1]}</title>
       </path>
     {/each}
-    <!--
-    <g transform="translate(-20,-100)">
-    <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 32 32" {...$$props}>
-	<path fill="black" d="M4 10.4V4a1 1 0 0 1 1-1h5V1h4v2h5a1 1 0 0 1 1 1v6.4l1.086.326a1 1 0 0 1 .683 1.2l-1.517 6.068A4.99 4.99 0 0 1 16 16a5 5 0 0 1-4 2a5 5 0 0 1-4-2a4.99 4.99 0 0 1-4.252 1.994l-1.516-6.068a1 1 0 0 1 .682-1.2zm2-.6L12 8l2.754.826l1.809.543L18 9.8V5H6zM4 20a5.98 5.98 0 0 0 4-1.528A5.98 5.98 0 0 0 12 20a5.98 5.98 0 0 0 4-1.528A5.98 5.98 0 0 0 20 20h2v2h-2a7.96 7.96 0 0 1-4-1.07A7.96 7.96 0 0 1 12 22a7.96 7.96 0 0 1-4-1.07A7.96 7.96 0 0 1 4 22H2v-2z" />
-	</svg>
-	</g> -->
     <text
       x="0"
       y="0"
@@ -326,11 +320,6 @@ onMount(() => {
     >
       Share of Ships
     </text>
-    <g transform="translate(-175,10)">
-    <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 32 32" {...$$props}>
-	<path fill="black" d="M4 10.4V4a1 1 0 0 1 1-1h5V1h4v2h5a1 1 0 0 1 1 1v6.4l1.086.326a1 1 0 0 1 .683 1.2l-1.517 6.068A4.99 4.99 0 0 1 16 16a5 5 0 0 1-4 2a5 5 0 0 1-4-2a4.99 4.99 0 0 1-4.252 1.994l-1.516-6.068a1 1 0 0 1 .682-1.2zm2-.6L12 8l2.754.826l1.809.543L18 9.8V5H6zM4 20a5.98 5.98 0 0 0 4-1.528A5.98 5.98 0 0 0 12 20a5.98 5.98 0 0 0 4-1.528A5.98 5.98 0 0 0 20 20h2v2h-2a7.96 7.96 0 0 1-4-1.07A7.96 7.96 0 0 1 12 22a7.96 7.96 0 0 1-4-1.07A7.96 7.96 0 0 1 4 22H2v-2z" />
-	</svg>
-	</g>
   </g>
 
   <g class="chart-inner" transform="translate({width / 4.5}, 50)">
@@ -350,13 +339,6 @@ onMount(() => {
         <title>{slice.data[0] + ': ' + slice.data[1]}</title>
       </path>
     {/each}
-    <!--
-    <g transform="translate(-17,-100)">
-    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 2048 2048" {...$$props}>
-	<path fill="black" d="M1920 2048H0L960 128zm-896-384H896v128h128zm0-128V896H896v640z" />
-	</svg>
-	</g>
-	-->
     <text
       x="0"
       y="0"
@@ -371,8 +353,8 @@ onMount(() => {
         <!--<tspan x="0" dy="1.2em">{$centralTextStore.centralText2.split('\n')[1]}</tspan>-->
       {/if}
     </text>
-    <text
-      x="-20"
+        <text
+      x="0"
       y="{height / 8}"  
       text-anchor="middle"
       font-size="30px"
@@ -381,11 +363,6 @@ onMount(() => {
     >
       Share of Incidents
     </text>
-    <g transform="translate(105,0)">
-	<svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 32 32" {...$$props}>
-	<path fill="black" d="M26.71 14.086L16.915 4.29a2.007 2.007 0 0 0-2.83 0L4.29 14.086a2.007 2.007 0 0 0 0 2.83l9.796 9.795c.778.778 2.05.778 2.83 0l9.796-9.796a2.009 2.009 0 0 0 0-2.828zM14.703 8.98c.22-.237.5-.356.844-.356s.624.118.844.353c.22.235.33.53.33.885c0 .306-.1 1.333-.303 3.082c-.2 1.75-.38 3.44-.53 5.072h-.717c-.135-1.633-.3-3.323-.5-5.072c-.198-1.75-.298-2.776-.298-3.082c0-.35.11-.642.33-.88zm1.73 12.82c-.248.24-.543.36-.886.36s-.638-.12-.885-.36c-.247-.242-.37-.534-.37-.877s.123-.638.37-.885c.248-.248.543-.372.886-.372s.638.124.885.372c.25.247.373.542.373.885s-.124.635-.372.876z" />
-</svg>
-	</g>
   </g>
 </svg>
 </center>

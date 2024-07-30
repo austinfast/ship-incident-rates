@@ -280,6 +280,7 @@ onMount(() => {
     </text>
     </g>
   <g class="chart-inner" transform="translate({-width / 4.5}, 50)">
+  <!-- removed tabindex="0" from under aria-label-->
     {#each data_ready1 as slice}
       <path
         d={arc(slice)}
@@ -287,7 +288,6 @@ onMount(() => {
         stroke="white"
         role="img"
         aria-label={slice.data[0] + ': ' + slice.data[1]}
-        tabindex="0"
         on:mouseover={(event) => handleMouseOver(event, slice, 0)}
         on:focus={(event) => handleFocus(event, slice, 0)}
         on:mouseout={(event) => handleMouseOut(event)}
@@ -334,6 +334,7 @@ onMount(() => {
   </g>
 
   <g class="chart-inner" transform="translate({width / 4.5}, 50)">
+    <!-- removed tabindex="0" from under aria-label-->
     {#each data_ready2 as slice}
       <path
         d={arc2(slice)}
@@ -341,7 +342,6 @@ onMount(() => {
         stroke="white"
         role="img"
         aria-label={slice.data[0] + ': ' + slice.data[1]}
-        tabindex="0"
         on:mouseover={(event) => handleMouseOver(event, slice, 1)}
         on:focus={(event) => handleFocus(event, slice, 1)}
         on:mouseout={(event) => handleMouseOut(event)}
